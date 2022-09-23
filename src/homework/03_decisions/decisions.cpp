@@ -28,7 +28,7 @@ std::string get_letter_grade_using_if(int grade)
     }
     else
     {
-        letter_grade = "Invalid score";
+        letter_grade = "Invalid Grade";
     }
 
     return letter_grade;
