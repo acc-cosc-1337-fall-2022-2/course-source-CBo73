@@ -12,6 +12,8 @@ int main()
     int position;
     int select = 0;
 
+    vector<int> allowed_positions{1,2,3,4,5,6,7,8,9};
+
     while (select == 0)
     {
         cout << "Player One: Choose X or O\n";
@@ -30,7 +32,20 @@ int main()
             while (!game.game_over());
 
             game.display_board();
-            game.game_over();
+            string winner = game.get_winner();
+            if(winner == "X")
+            {
+                cout<<"\nThe winner is "<<winner<<"\n";
+            }
+            else if(winner == "O")
+            {
+                cout<<"\nThe winner is "<<winner<<"\n";
+            }
+            else if(winner == "C")
+            {
+                cout<<"\nThe game has ended in a tie\n";
+            }
+
             cout << "Would you like to play again? Press 0 for continue or 1 to Exit\n";
             cin >> select;
         }
