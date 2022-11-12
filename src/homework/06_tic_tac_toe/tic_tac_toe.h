@@ -11,16 +11,19 @@ using std::string;
 using std::vector;
 using std::cout;
 using std::cin;
+using std::ostream;
+using std::istream;
 
 class TicTacToe
 {
+friend ostream& operator << (ostream& out, const TicTacToe& game);
+friend istream& operator >> (istream& in, TicTacToe& game);
 
 public:
     bool game_over();
     void start_game(string first_player);
     void mark_board(int position);
     string get_player() const;
-    void display_board() const;
     string get_winner();
 
 private:

@@ -2,6 +2,31 @@
 #include "tic_tac_toe.h"
 
 
+ostream& operator << (ostream& out, const TicTacToe& game)
+{
+    for(int i = 0; i < game.pegs.size(); i++)
+    {
+        out << game.pegs[i];
+        if(i == 2 || i == 5 || i == 8)
+        {
+            out << '\n';
+        }
+        else
+        {
+            out << "|";
+        }
+    }
+    return out;
+}
+
+istream& operator >> (istream& in, TicTacToe& game)
+{
+    int position;
+    cout << "Player " << game.get_player() << " choose position 1-9\n";
+    in >> position;
+    game.mark_board(position);
+    return in;
+}
 
 bool TicTacToe::game_over()
 {
@@ -36,22 +61,6 @@ void TicTacToe::mark_board(int position)
 string TicTacToe::get_player() const
 {
     return player;
-}
-
-void TicTacToe::display_board() const
-{
-    for(int i = 0; i < pegs.size(); i++)
-    {
-        cout << pegs[i];
-        if(i == 2 || i == 5 || i == 8)
-        {
-            cout << '\n';
-        }
-        else
-        {
-            cout << "|";
-        }
-    }
 }
 
 string TicTacToe::get_winner()
