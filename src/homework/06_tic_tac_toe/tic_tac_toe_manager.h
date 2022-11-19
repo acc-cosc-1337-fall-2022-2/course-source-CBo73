@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <memory>
 
 #ifndef TicTacToeManager_H
 #define TicTacToeManager_H
@@ -14,17 +15,18 @@ using std::cout;
 using std::cin;
 using std::ostream;
 using std::istream;
+using std::unique_ptr;
 
 class TicTacToeManager
 {
 
 public:
     void get_winner_totals(int& x,int& o,int& t);
-    void save_game(TicTacToe b);
+    void save_game(unique_ptr<TicTacToe>& b);
     friend ostream& operator << (ostream &out, const TicTacToeManager& manager);
 
 private:
-    vector <TicTacToe> games;
+    vector <unique_ptr<TicTacToe>> games;
     void update_winner_count(string winner);
     int x_wins = {0};
     int o_wins = {0};

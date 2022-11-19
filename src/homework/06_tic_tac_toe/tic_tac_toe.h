@@ -25,14 +25,18 @@ public:
     void mark_board(int position);
     string get_player() const;
     string get_winner();
+    TicTacToe(int size);
+
+protected:
+    vector<string> pegs;
+    virtual bool check_column_win();
+    virtual bool check_row_win();
+    virtual bool check_diagonal_win();
+
 
 private:
     string player;
     string winner;
-    vector<string> pegs{" "," "," "," "," "," "," "," "," "};
-    bool check_column_win();
-    bool check_row_win();
-    bool check_diagonal_win();
     void set_winner();
     void set_next_player();
     bool check_board_full();
